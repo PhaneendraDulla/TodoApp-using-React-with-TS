@@ -1,1 +1,1 @@
-# TodoApp-using-React-with-TS
+# Todo App using React and TS
