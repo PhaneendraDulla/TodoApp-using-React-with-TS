@@ -6,14 +6,20 @@ import { Todo } from "./todo.model";
 function App() {
   const [todos, setTodos] = useState<Todo[]>([]);
 
-  const todoHandler = (text: string) => {
+  const todoAddHandler = (text: string) => {
     setTodos((prevtodos) => [...prevtodos, { id: Math.random().toString(), text: text }]);
+  };
+
+  const todoDeleteHandler = (todoId: string) => {
+    setTodos((prevtodos) => {
+      return prevtodos.filter((todo) => todo.id !== todoId);
+    });
   };
 
   return (
     <div className="App">
-      <NewTodo onAddTodo={todoHandler} />
-      <TodoList items={todos} />
+      <NewTodo onAddTodo={todoAddHandler} />
+      <TodoList items={todos} onDeleteTodo={todoDeleteHandler} />
     </div>
   );
 }
